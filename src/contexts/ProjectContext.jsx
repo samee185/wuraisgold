@@ -1,4 +1,3 @@
-// context/ProjectContext.jsx
 import { createContext, useContext, useState, useEffect } from "react";
 
 const ProjectContext = createContext();
