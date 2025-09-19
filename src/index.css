@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* @font-face {
+  font-family: "Matter";
+  src: url("./assets/matter-font/Matter-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+} */
+
+:root {
+  /* font-family: "Matter", sans-serif; */
+  font-family: "Inter", sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color: #4e4e4e;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+body {
+  color: #4e4e4e;
+}
+button {
+  outline: none;
+}
+select {
+  appearance: none;
+  outline: none;
+}
+
+/* header .active {
+  color: #F77213;
+} */
+
+.snap {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.snap::-webkit-scrollbar {
+  display: none;
+}
