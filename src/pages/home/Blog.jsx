@@ -21,7 +21,7 @@ export default function Blog() {
       </div>
 
       {/* Blogs Grid */}
-      <div className="px-5 md:px-20 flex flex-col md:grid grid-cols-3 gap-10">
+      <div className="px-5 md:px-20 flex flex-col md:grid grid-cols-3 gap-10 overflow-hidden">
         {loading.fetch ? (
           <p>Loading blogs...</p>
         ) : blogs?.length > 0 ? (
