@@ -1,6 +1,6 @@
 import { createContext, useContext, useState, useEffect } from "react";
 import axios from "axios";
-import { toast } from "react-toastify";
+// import { toast } from "react-toastify";
 
 const BlogContext = createContext();
 
@@ -43,33 +43,33 @@ const BlogProvider = ({ children }) => {
   };
 
   // Create new blog
-  const createBlog = async (formData) => {
-  setLoading((prev) => ({ ...prev, create: true }));
-  setError(null);
+//   const createBlog = async (formData) => {
+//   setLoading((prev) => ({ ...prev, create: true }));
+//   setError(null);
 
-  try {
-    const token = localStorage.getItem("token");
+//   try {
+//     const token = localStorage.getItem("token");
 
-    const res = await axios.post(`${BASE_URL}/blogs`, formData, {
-      headers: {
-        "Content-Type": "multipart/form-data",
-        Authorization: `Bearer ${token}`,
-      },
-    });
+//     const res = await axios.post(`${BASE_URL}/blogs`, formData, {
+//       headers: {
+//         "Content-Type": "multipart/form-data",
+//         Authorization: `Bearer ${token}`,
+//       },
+//     });
 
-    if (res.data.data) {
-      setBlogs((prev) => [...prev, res.data.data]);
-      return res.data.data;
-    }
-    toast.success("Blog created successfully");
-  } catch (err) {
-    setError(err.response?.data?.message || "Failed to create blog");
-    toast.error(err.response?.data?.message || "Failed to create blog");
-    throw err;
-  } finally {
-    setLoading((prev) => ({ ...prev, create: false }));
-  }
-};
+//     if (res.data.data) {
+//       setBlogs((prev) => [...prev, res.data.data]);
+//       return res.data.data;
+//     }
+//     toast.success("Blog created successfully");
+//   } catch (err) {
+//     setError(err.response?.data?.message || "Failed to create blog");
+//     toast.error(err.response?.data?.message || "Failed to create blog");
+//     throw err;
+//   } finally {
+//     setLoading((prev) => ({ ...prev, create: false }));
+//   }
+// };
 
 
   // Update blog
@@ -133,7 +133,7 @@ const BlogProvider = ({ children }) => {
         loading,
         error,
         fetchBlogs,
-        createBlog,
+        // createBlog,
         updateBlog,
         deleteBlog,
       }}
