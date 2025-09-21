@@ -10,11 +10,11 @@ export default function Blog() {
   const [info, setInfo] = useState({});
   useEffect(() => {
     blogs.filter((detail) => {
-      if (detail.slug === params.slug) {
+      if (detail._id === params.id) {
         setInfo(detail);
       }
     });
-  }, [params.slug]);
+  }, [params.id]);
 
   return (
     <main className="flex flex-col">
@@ -23,18 +23,18 @@ export default function Blog() {
       <main className="px-5 md:px-20 py-10 md:py-20 flex flex-col md:grid grid-cols-[2fr_1fr] gap-10">
         <div className="flex flex-col gap-5">
           <div className="flex flex-col gap-2">
-            <b className="text-2xl md:text-[48px] font-semibold text-black">
+            <p className="text-2xl md:text-6xl font-bold text-black">
               {info?.title}
-            </b>
+            </p>
             <p className="text-primary">{info?.date}</p>
           </div>
           <div className="flex flex-col gap-4">
             <img
-              src={info?.img}
+              src={info?.image}
               alt=""
               className="w-full h-[60vh] object-cover rounded-2xl"
             />
-            <p className="">{info?.article}</p>
+            <p className="text-md text-red">{info?.content}</p>
           </div>
           <form className="py-10 flex flex-col gap-5">
             <div className="flex flex-col gap-2">
