@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import { useBlog } from "../../contexts/BlogContext";
 
 export default function Blog() {
-  const { blogDetails } = useBlog();
+  const { blogs, blogDetails } = useBlog();
   let params = useParams();
   const [info, setInfo] = useState({});
   useEffect(() => {
@@ -72,7 +72,7 @@ export default function Blog() {
         <aside className="p-5 flex flex-col gap-4 bg-white h-fit rounded-2xl ">
           <b className="text-xl text-black">Recent Posts</b>
           {blogs
-            .filter((blog) => blog.slug !== params.slug)
+            .filter((blog) => blog.id !== params._id)
             .map((blog, i) => (
               <div key={i} className="flex flex-col gap-2 border-b py-2">
                 <b className="text-xl text-black">{blog?.title}</b>
