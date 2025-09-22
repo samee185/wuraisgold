@@ -3,13 +3,14 @@ import Header from "../../layout/Header";
 import Footer from "../../layout/Footer";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { blogs } from "../../utils/Blogs";
+import { useBlog } from "../../contexts/BlogContext";
 
 export default function Blog() {
+  const { blogDetails } = useBlog();
   let params = useParams();
   const [info, setInfo] = useState({});
   useEffect(() => {
-    blogs.filter((detail) => {
+    blogDetails.filter((detail) => {
       if (detail._id === params.id) {
         setInfo(detail);
       }

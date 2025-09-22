@@ -1,6 +1,5 @@
 import { createContext, useContext, useState, useEffect } from "react";
 import axios from "axios";
-// import { toast } from "react-toastify";
 
 const BlogContext = createContext();
 
@@ -10,8 +9,10 @@ export const useBlog = () => {
 
 const BlogProvider = ({ children }) => {
   const [blogs, setBlogs] = useState([]);
+  const [blogDetails, setBlogDetails] = useState(null); // ✅ single blog details
   const [loading, setLoading] = useState({
     fetch: false,
+    details: false, // ✅ new state for details
     create: false,
     update: false,
     delete: false,
@@ -20,7 +21,7 @@ const BlogProvider = ({ children }) => {
 
   const BASE_URL = import.meta.env.VITE_API_URL;
 
-  // Fetch all blogs
+  // ✅ Fetch all blogs
   const fetchBlogs = async () => {
     setLoading((prev) => ({ ...prev, fetch: true }));
     setError(null);
@@ -29,8 +30,6 @@ const BlogProvider = ({ children }) => {
       const res = await axios.get(`${BASE_URL}/blogs`);
       if (Array.isArray(res.data.data)) {
         setBlogs(res.data.data);
-        // console.log(res.data.data);
-        
       } else {
         console.error("Unexpected response:", res.data);
         setBlogs([]);
@@ -42,37 +41,28 @@ const BlogProvider = ({ children }) => {
     }
   };
 
-  // Create new blog
-//   const createBlog = async (formData) => {
-//   setLoading((prev) => ({ ...prev, create: true }));
-//   setError(null);
+  // ✅ Fetch single blog by ID
+  const fetchBlogDetails = async (id) => {
+    setLoading((prev) => ({ ...prev, details: true }));
+    setError(null);
 
-//   try {
-//     const token = localStorage.getItem("token");
+    try {
+      const res = await axios.get(`${BASE_URL}/blogs/${id}`);
+      if (res.data.data) {
+        setBlogDetails(res.data.data);
+        return res.data.data;
+      } else {
+        setBlogDetails(null);
+      }
+    } catch (err) {
+      setError(err.response?.data?.message || "Failed to fetch blog details");
+      setBlogDetails(null);
+    } finally {
+      setLoading((prev) => ({ ...prev, details: false }));
+    }
+  };
 
-//     const res = await axios.post(`${BASE_URL}/blogs`, formData, {
-//       headers: {
-//         "Content-Type": "multipart/form-data",
-//         Authorization: `Bearer ${token}`,
-//       },
-//     });
-
-//     if (res.data.data) {
-//       setBlogs((prev) => [...prev, res.data.data]);
-//       return res.data.data;
-//     }
-//     toast.success("Blog created successfully");
-//   } catch (err) {
-//     setError(err.response?.data?.message || "Failed to create blog");
-//     toast.error(err.response?.data?.message || "Failed to create blog");
-//     throw err;
-//   } finally {
-//     setLoading((prev) => ({ ...prev, create: false }));
-//   }
-// };
-
-
-  // Update blog
+  // ✅ Update blog
   const updateBlog = async (id, blogData) => {
     setLoading((prev) => ({ ...prev, update: true }));
     setError(null);
@@ -101,7 +91,7 @@ const BlogProvider = ({ children }) => {
     }
   };
 
-  // Delete blog
+  // ✅ Delete blog
   const deleteBlog = async (id) => {
     setLoading((prev) => ({ ...prev, delete: true }));
     setError(null);
@@ -130,10 +120,11 @@ const BlogProvider = ({ children }) => {
     <BlogContext.Provider
       value={{
         blogs,
+        blogDetails,     // ✅ single blog state
         loading,
         error,
         fetchBlogs,
-        // createBlog,
+        fetchBlogDetails, // ✅ new function exposed
         updateBlog,
         deleteBlog,
       }}
