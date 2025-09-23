@@ -47,13 +47,13 @@ const BlogProvider = ({ children }) => {
     setError(null);
 
     try {
-      const res = await axios.get(`${BASE_URL}/blogs/${id}`);
-      if (res.data.data) {
-        setBlogDetails(res.data.data);
-        return res.data.data;
-      } else {
-        setBlogDetails(null);
-      }
+        const res = await axios.get(`${BASE_URL}/blogs/${id}`);
+        // console.log('Full blog details response:', res.data);
+        let details = res.data.data;
+        if (Array.isArray(details)) {
+          details = details.length > 0 ? details[0] : null;
+        }
+        setBlogDetails(details);
     } catch (err) {
       setError(err.response?.data?.message || "Failed to fetch blog details");
       setBlogDetails(null);

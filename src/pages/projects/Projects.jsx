@@ -9,7 +9,7 @@ import Subscribe from "../../layout/Subscribe";
 import { useProject } from "../../contexts/ProjectContext";
 
 export default function Projects() {
-  const { projectId } = useParams(); // 🔥 assumes your route is `/projects/:id`
+  const { projectId } = useParams(); 
   const { 
     projects, 
     projectDetails, 
@@ -22,7 +22,7 @@ export default function Projects() {
 
   useEffect(() => {
     if (projectId) {
-      fetchProjectDetails(projectId); // ✅ fetch details by id from context
+      fetchProjectDetails(projectId); 
     }
   }, [projectId]);
 
