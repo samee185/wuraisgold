@@ -7,15 +7,23 @@ import { useBlog } from "../../contexts/BlogContext";
 
 export default function Blog() {
   const { blogs, blogDetails } = useBlog();
-  let params = useParams();
-  const [info, setInfo] = useState({});
+  const params = useParams();
+  const [info, setInfo] = useState(null);
+
   useEffect(() => {
-    blogDetails.filter((detail) => {
-      if (detail._id === params.id) {
-        setInfo(detail);
-      }
-    });
-  }, [params.id]);
+    if (blogDetails && params.id) {
+      const blog = blogDetails.find((detail) => detail._id === params.id);
+      setInfo(blogDetails);
+    }
+  }, [params.id, blogDetails]);
+
+  if (!info) {
+    return (
+      <main className="flex flex-col items-center justify-center h-screen">
+        <p className="text-lg text-gray-600">Loading blog details...</p>
+      </main>
+    );
+  }
 
   return (
     <main className="flex flex-col">
@@ -25,24 +33,26 @@ export default function Blog() {
         <div className="flex flex-col gap-5">
           <div className="flex flex-col gap-2">
             <p className="text-2xl md:text-6xl font-bold text-black">
-              {info?.title}
+              {info.title}
             </p>
-            <p className="text-primary">{info?.date}</p>
+            <p className="text-primary">{info.date}</p>
           </div>
           <div className="flex flex-col gap-4">
             <img
-              src={info?.image}
-              alt=""
+              src={info.image}
+              alt={info.title}
               className="w-full h-[60vh] object-cover rounded-2xl"
             />
-            <p className="text-md text-red">{info?.content}</p>
+            <p className="text-md text-gray-700">{info.content}</p>
           </div>
+
+          {/* Comment Form */}
           <form className="py-10 flex flex-col gap-5">
             <div className="flex flex-col gap-2">
               <b className="text-xl md:text-2xl font-semibold text-black">
                 Leave A Comment
               </b>
-              <p className="">Your email address will not be published.</p>
+              <p>Your email address will not be published.</p>
             </div>
             <label className="flex flex-col gap-1">
               <span>Name</span>
@@ -69,14 +79,16 @@ export default function Blog() {
             </label>
           </form>
         </div>
+
+        {/* Recent Posts */}
         <aside className="p-5 flex flex-col gap-4 bg-white h-fit rounded-2xl ">
           <b className="text-xl text-black">Recent Posts</b>
           {blogs
-            .filter((blog) => blog.id !== params._id)
-            .map((blog, i) => (
-              <div key={i} className="flex flex-col gap-2 border-b py-2">
-                <b className="text-xl text-black">{blog?.title}</b>
-                <p className="text-primary">{blog?.date}</p>
+            .filter((blog) => blog._id !== params.id) // ✅ Fixed _id
+            .map((blog) => (
+              <div key={blog._id} className="flex flex-col gap-2 border-b py-2">
+                <b className="text-xl text-black">{blog.title}</b>
+                <p className="text-primary">{blog.date}</p>
               </div>
             ))}
         </aside>
