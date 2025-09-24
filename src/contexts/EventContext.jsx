@@ -22,11 +22,13 @@ export const EventProvider = ({ children }) => {
 
     try {
       const { data } = await axios.get(`${BASE_URL}/event`);
-      // ✅ Extract only the array from API response
+      
       setEvents(Array.isArray(data.data) ? data.data : []);
+      // console.log(events);
+      
     } catch (err) {
       setError(err.response?.data?.message || "Failed to fetch events");
-      toast.error(err.response?.data?.message || "Failed to fetch events");
+      // toast.error(err.response?.data?.message || "Failed to fetch events");
       setEvents([]); // fallback to empty array
     } finally {
       setLoading((prev) => ({ ...prev, fetch: false }));
