@@ -10,13 +10,13 @@ import { useBlog } from "../../contexts/BlogContext";
 export default function Blog() {
   const { blogId } = useParams(); 
   const { blogs, blogDetails, fetchBlogDetails, loading, error } = useBlog();
-  console.log('blogId from useParams:', blogId);
-  console.log('blogDetails from context:', blogDetails);
+  // console.log('blogId from useParams:', blogId);
+  // console.log('blogDetails from context:', blogDetails);
   
 
   useEffect(() => {
     if (blogId) {
-      console.log('Calling fetchBlogDetails with blogId:', blogId);
+      // console.log('Calling fetchBlogDetails with blogId:', blogId);
       fetchBlogDetails(blogId); 
     } else {
       console.log('No blogId found in useParams');

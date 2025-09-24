@@ -15,6 +15,7 @@ import Volunteer from "./pages/volunteer";
 import Donate from "./pages/donate";
 import { ProjectProvider } from "./contexts/ProjectContext";
 import BlogProvider from "./contexts/BlogContext";
+import { EventProvider } from "./contexts/EventContext";
 
 const router = createBrowserRouter([
   {
@@ -76,7 +77,9 @@ function App() {
     <div className="App bg-[#F9F9F9]">
       <ProjectProvider>
         <BlogProvider>
-          <RouterProvider router={router} />
+          <EventProvider>
+            <RouterProvider router={router} />
+          </EventProvider>
         </BlogProvider>
       </ProjectProvider>
     </div>
