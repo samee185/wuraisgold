@@ -22,7 +22,7 @@ export default function Events() {
           href="#past"
           className={`min-w-fit w-fit h-10 md:h-12 font-[500] md:font-[600] rounded-full bg-white flex items-center justify-center px-8`}
         >
-          Past Event
+          Past Events
         </a>
       </nav>
       <section className="flex flex-col gap-5" id="up">
