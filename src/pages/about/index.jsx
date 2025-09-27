@@ -19,8 +19,8 @@ export default function index() {
       <Statements />
       <Program />
       <Donate />
-      <Volunteer />
-      <Partners />
+      {/* <Volunteer /> */}
+      {/* <Partners /> */}
       <Footer />
     </main>
   );
