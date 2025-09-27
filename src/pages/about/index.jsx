@@ -8,6 +8,7 @@ import Program from "../home/Program";
 import Donate from "../home/Donate";
 import Volunteer from "../home/Volunteer";
 import Partners from "./Partners";
+import Sectors from "../../components/Sectors";
 
 export default function index() {
   return (
@@ -19,6 +20,7 @@ export default function index() {
       <Statements />
       <Program />
       <Donate />
+      <Sectors />
       {/* <Volunteer /> */}
       {/* <Partners /> */}
       <Footer />
