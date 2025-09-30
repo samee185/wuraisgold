@@ -4,7 +4,7 @@ import Header from "../../layout/Header";
 import Footer from "../../layout/Footer";
 import { Btn } from "../../utils/Button";
 import Quote from "./Quote";
-import About from "./ABout";
+import About from "./About";
 import Projects from "./Projects";
 import Events from "./Events";
 // import Volunteer from "./Volunteer";
