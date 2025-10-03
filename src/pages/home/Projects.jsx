@@ -53,7 +53,7 @@ export default function Projects() {
   );
 }
 
-function Single({ img, title, date, text, slug }) {
+function Single({ img, title, date, text, id }) {
   return (
     <div className="group relative flex flex-col bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden">
       {/* Project Image */}
