@@ -16,7 +16,7 @@ export default function Donate() {
           <h2 className="text-3xl md:text-[60px] font-bold leading-normal">
             Fundraising for the people and causes you care about
           </h2>
-          <Btn name="Donate to our course" slug="/donate-now" />
+          <Btn name="Donate to our course" id="/donate-now" />
         </div>
         <div className="w-full flex flex-col md:grid grid-cols-2 gap-5 items-center">
           <div className="h-full w-full flex items-start">

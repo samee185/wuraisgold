@@ -84,7 +84,7 @@ function Single({ img, title, date, text, slug }) {
         <div className="mt-auto pt-4">
           <Btn
             name="Learn More"
-            slug={`/projects/${slug}`}
+            id={`/projects/${id}`}
             className="!px-6 !py-2 !rounded-full !bg-primary !text-white hover:!bg-primary/90 transition-all duration-300"
           />
         </div>

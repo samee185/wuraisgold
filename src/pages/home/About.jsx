@@ -19,7 +19,7 @@ export default function About() {
             and empower the individuals we assist through our meticulous
             planning, innovative strategies, and relentless dedication.
           </p>
-          <Btn name="READ ABOUT US" slug="/about" />
+          <Btn name="READ ABOUT US" id="/about" />
         </div>
       </div>
     </main>

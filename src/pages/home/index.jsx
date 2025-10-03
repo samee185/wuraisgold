@@ -26,7 +26,7 @@ export default function index() {
         <h2 className="md:w-2/3 text-6xl md:text-[100px] font-extrabold leading-tight capitalize">
           Lend the helping hand get involved
         </h2>
-        <Btn name="LEARN MORE" slug="/about" />
+        <Btn name="LEARN MORE" id="/about" />
       </div>
       <Quote />
       <About />

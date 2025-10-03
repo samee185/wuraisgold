@@ -19,7 +19,7 @@ export default function Program() {
             and action. Join us in our mission to create lasting impact and
             build a world where every heart shines with hope and opportunity.
           </p>
-          <Btn name="Donate now" slug="/donate-now" />
+          <Btn name="Donate now" id="/donate-now" />
         </div>
         <div className="grid grid-cols-2 gap-5 md:gap-10">
           <Single

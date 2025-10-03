@@ -22,7 +22,7 @@ export default function Volunteer() {
             any activity targeted at them will produce an all-encompassing
             result.
           </p>
-          <Btn name="Become a volunteer" bg="#EB242B" slug="/volunteer" />
+          <Btn name="Become a volunteer" bg="#EB242B" id="/volunteer" />
         </div>
         <div className="w-full flex flex-col gap-10">
           <nav className="w-full flex flex-col md:flex-row justify-around items-center gap-10">

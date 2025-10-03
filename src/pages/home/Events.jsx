@@ -14,7 +14,7 @@ export default function Events() {
         <div className="flex flex-col gap-5 px-5 mx-auto text-center">
           <p className="text-primary">Events & Campaigns</p>
           <h3 className="text-xl md:text-[40px] text-dark font-bold leading-snug">
-            Upcoming Events
+           Past and Upcoming Events
           </h3>
         </div>
         <div className="flex flex-col grid-cols-3 gap-10 md:grid">
@@ -22,19 +22,19 @@ export default function Events() {
             img={immunization}
             title="Immunization Truth: Separating Fact from Fiction"
             date="May 31st, 2025"
-            slug="immunization-truth-separating-fact"
+            id="immunization-truth-separating-fact"
           />
           <Single
             img={img4}
             title="Unlock A Healthier You"
             date="January 13, 2024"
-            slug="unlock-a-healthier-you"
+            id="unlock-a-healthier-you"
           />
           <Single
             img={img3}
             title="Kuchingoro idp Abuja camp"
             date="17th December, 2021"
-            slug=""
+            id=""
           />
           <Single
             img={img2}
