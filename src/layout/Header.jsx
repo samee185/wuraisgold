@@ -36,20 +36,20 @@ export default function Header() {
         <NavLink to="/blogs" className="">
           Blog
         </NavLink>
-        <NavLink to="/gallery" className="">
+        {/* <NavLink to="/gallery" className="">
           Our Gallery
-        </NavLink>
+        </NavLink> */}
         <Btn
           name="DONATE NOW"
           bg="#EB242B"
-          slug="/donate-now"
+          id="/donate-now"
           style="md:hidden flex"
         />
       </nav>
       <Btn
         name="DONATE NOW"
         bg="#EB242B"
-        slug="/"
+        id="/donate-now"
         style="hidden md:flex"
       />
       {open ? (

@@ -137,7 +137,7 @@ export default function Blog() {
                 img={blog?.image}
                 title={blog?.title}
                 date={blog?.date}
-                slug={blog?._id}
+                id={blog?._id}
                 text={blog?.content?.slice(0, 100) + "..."}
               />
             ))}
