@@ -56,7 +56,7 @@ export default function Blog() {
             Become a part of {`WuraisGold's`} impactful journey by
             volunteering your time and skills.
           </h2>
-          <Btn name="Become a volunteer" slug="/volunteer" />
+          <Btn name="Become a volunteer" id="/volunteer" />
         </div>
       </div>
 
