@@ -39,7 +39,7 @@ export default function Projects() {
                 img={project.images[0]}
                 title={project.title}
                 date={project.date ? new Date(project.date).toDateString() : "No date"}
-                slug={project.slug}
+                id={project._id}
                 text={project.description}
               />
             ))
@@ -55,39 +55,28 @@ export default function Projects() {
 
 function Single({ img, title, date, text, id }) {
   return (
-    <div className="group relative flex flex-col bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden">
-      {/* Project Image */}
-      <div className="h-56 w-full overflow-hidden">
+    <div className="w-full flex flex-col bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group">
+      <div className="relative h-48 w-full overflow-hidden">
         <img
           src={img}
           alt={title}
-          className="h-full w-full object-cover transform group-hover:scale-105 transition-transform duration-500"
+          className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-500"
         />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 px-4 py-2 text-white">
+          <h3 className="text-lg font-bold drop-shadow-lg">{title}</h3>
+          <p className="text-sm text-primary drop-shadow">{date}</p>
+        </div>
       </div>
-
-      {/* Content */}
-      <div className="flex flex-col flex-grow p-6 space-y-4">
-        {/* Title & Date */}
-        <div>
-          <h3 className="text-xl font-semibold text-gray-900 group-hover:text-primary transition-colors duration-300">
-            {title}
-          </h3>
-          <p className="text-sm text-gray-500 mt-1">{date}</p>
-        </div>
-
-        {/* Description */}
-        <p className="text-gray-600 text-sm leading-relaxed line-clamp-3">
-          {text}
-        </p>
-
-        {/* Action Button */}
-        <div className="mt-auto pt-4">
-          <Btn
-            name="Learn More"
-            id={`/projects/${id}`}
-            className="!px-6 !py-2 !rounded-full !bg-primary !text-white hover:!bg-primary/90 transition-all duration-300"
-          />
-        </div>
+      <div className="flex flex-col gap-2 p-5">
+        {text && <p className="text-gray-500 text-sm leading-relaxed line-clamp-3">{text}</p>}
+      </div>
+      <div className="w-full px-5 pb-5">
+        <Btn
+          name="Learn More"
+          id={`/projects/${id}`}
+          className="block w-full bg-primary text-white text-center py-2 rounded-full font-semibold shadow hover:bg-primary/90 transition-all"
+        />
       </div>
     </div>
   );

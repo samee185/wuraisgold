@@ -51,14 +51,13 @@ function Single({ ...info }) {
       <img
         src={info?.img}
         alt={info?.title}
-        className="w-full object-cover rounded-md"
+        className="w-full object-cover rounded-md h-48"
       />
       <div className="flex flex-col gap-2">
         <b className="text-xl text-black">{info?.title}</b>
         <p className="text-primary">{info?.date}</p>
         <p className="text-gray-700">{info?.text}</p>
       </div>
-
       <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
         <Btn
           name="VIEW PROJECT"
