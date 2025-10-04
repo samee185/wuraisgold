@@ -33,7 +33,7 @@ export default function index() {
       <Program />
       <Projects />
       <Donate />
-      <Events />
+      {/* <Events /> */}
       {/* <Volunteer /> */}
       <Blog />
       <Subscribe />
