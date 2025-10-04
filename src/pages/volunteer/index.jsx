@@ -65,37 +65,42 @@ export default function Index() {
   // }
 
   return (
-    <main className="flex flex-col bg-[#F9F9F9]">
+    <main className="flex flex-col min-h-screen bg-gradient-to-br from-[#F9F9F9] via-[#e0f7fa] to-[#fceabb]">
       <ScrollToTop />
       <Header />
-      <Hero title="Become A Volunteer" />
-      <main className="px-5 md:px-20 py-10 md:py-20 flex flex-col gap-10">
-        <img src={img} alt="" />
-        <h3 className="text-2xl font-semibold">Hello Everyone!</h3>
-        <p>Trust you are doing great and having a fruitful week ahead.</p>
-        <p>
-          As a result of our upcoming events and outreaches, it's important
-          current volunteers and interested volunteers register via this link.
-          This is to ensure we carry everyone along and ensure active
-          participation and involvement. Non active volunteers who do not fill
-          the form by *20th June, 2024* would be removed from the platform. It
-          would be assumed that they are no longer interested to be a part of
-          us.
-        </p>
-        <p>We appreciate your dedication and commitment thus far.</p>
-        <p>Thank you</p>
-        <b>Kindly find below the form link to fill below</b>
-        <a
-          href="https://docs.google.com/forms/d/e/1FAIpQLSfo6zC531h3ew4CQUXH3fCxVqI2tvMYRFGOX7skQkpHXxxJsA/viewform?usp=pp_url"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          link
-        </a>
-        <p>
-          Kindly take out just less than 2 Minutes of your time to fill the
-          form.
-        </p>
+      {/* Hero Section with overlay */}
+      <section className="relative w-full h-[320px] md:h-[400px] flex items-center justify-center mb-[-80px]">
+        <img src={img} alt="Volunteer" className="absolute inset-0 w-full h-full object-cover opacity-60" />
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/80 to-[#fceabb]/80" />
+        <div className="relative z-10 text-center text-white px-4">
+          <h1 className="text-4xl md:text-5xl font-bold mb-4 drop-shadow-lg animate-fade-in">Become A Volunteer</h1>
+          <p className="text-lg md:text-xl font-medium animate-fade-in delay-100">Join us in making a real impact!</p>
+        </div>
+      </section>
+
+      {/* Card Section */}
+      <main className="flex flex-col items-center justify-center px-5 md:px-0 py-10 md:py-20">
+        <div className="w-full max-w-2xl bg-white rounded-2xl shadow-xl p-8 md:p-12 flex flex-col gap-6 animate-fade-in-up">
+          <h3 className="text-2xl md:text-3xl font-bold text-primary mb-2">Hello Everyone!</h3>
+          <p className="text-gray-700">Trust you are doing great and having a fruitful week ahead.</p>
+          <p className="text-gray-700">
+            As a result of our upcoming events and outreaches, it's important current volunteers and interested volunteers register via this link. This is to ensure we carry everyone along and ensure active participation and involvement. <span className=" hidden font-semibold text-primary">Non active volunteers who do not fill the form by <span className="underline">20th June, 2024</span> would be removed from the platform.</span> It would be assumed that they are no longer interested to be a part of us if you don't fill this form.
+          </p>
+          <p className="text-gray-700">We appreciate your dedication and commitment thus far.</p>
+          <p className="text-gray-700">Thank you!</p>
+          <div className="flex flex-col items-center gap-2 mt-4">
+            <span className="font-semibold text-lg">Kindly fill the volunteer form below:</span>
+            <a
+              href="https://docs.google.com/forms/d/e/1FAIpQLSfo6zC531h3ew4CQUXH3fCxVqI2tvMYRFGOX7skQkpHXxxJsA/viewform?usp=pp_url"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block px-8 py-3 rounded-full bg-primary text-white font-bold text-lg shadow-md hover:bg-primary/90 transition-all duration-200 animate-bounce"
+            >
+              Fill Volunteer Form
+            </a>
+            <p className="text-sm text-gray-500 mt-2">It takes less than 2 minutes!</p>
+          </div>
+        </div>
       </main>
 
       <Subscribe />
