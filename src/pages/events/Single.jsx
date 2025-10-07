@@ -38,7 +38,7 @@ export default function Single() {
           </p>
         </nav>
       </main>
-      <div className="flex flex-col items-center justify-center max-w-4xl px-5 py-10 text-left text-center md:px-20 md:py-20 gap-7">
+      <div className="flex flex-col items-center justify-center max-w-4xl px-5 py-10 text-left md:px-20 md:py-20 gap-7">
         <img src={info.hero} alt="" />
         <h4 className="text-3xl md:text-[40px] font-[600] text-black">
           About Event
