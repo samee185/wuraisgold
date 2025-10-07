@@ -1,10 +1,18 @@
-import { Link } from "react-router-dom";
 import { Btn } from "../utils/Button";
 
 export default function Single({ id, img, title, date, text, slug }) {
-  
+  // Determine route based on context
+  let route = ""; 
+  if (window.location.pathname.includes("events")) {
+    route = `/events/${id}`;
+  } else if (window.location.pathname.includes("projects")) {
+    route = `/projects/${id}`;
+  } else if (window.location.pathname.includes("blogs")) {
+    route = `/blogs/${id}`;
+  } else {
+    route = slug ? `/blogs/${slug}` : `/blogs/${id}`;
+  }
 
-  const isEvent = slug && slug.startsWith('/events/');
   return (
     <div className="relative rounded-3xl shadow-lg overflow-hidden group bg-white flex flex-col h-full">
       <div className="relative h-56 w-full overflow-hidden">
@@ -20,13 +28,7 @@ export default function Single({ id, img, title, date, text, slug }) {
         <p className="text-xs text-gray-500 mb-2">{date}</p>
         <p className="text-gray-700 text-sm line-clamp-3 mb-4 flex-1">{text}</p>
         <div className="mt-auto">
-          {isEvent ? (
-            <Link to={`/events/${id}`} className="block w-full">
-              <Btn name="Read More" />
-            </Link>
-          ) : (
-            <Btn name="Read More" slug={slug ? `/blogs/${slug}` : `/blogs/${id}`} />
-          )}
+          <Btn name="Read More" id={route} />
         </div>
       </div>
     </div>

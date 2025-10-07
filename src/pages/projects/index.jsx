@@ -34,7 +34,7 @@ export default function Index() {
                   day: "numeric",
                 })}
                 text={project?.text}
-                slug={`/projects/${project?._id}`}
+                slug={project?._id}
                 donateLink={true}
               />
             ))}

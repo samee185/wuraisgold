@@ -46,7 +46,7 @@ export default function Events() {
                 title={event.title}
                 date={new Date(event.date).toLocaleDateString()}
                 text={event.description}
-                slug={`/events/${event._id}`}
+                slug={event._id}
                 venue={event.venue}
                 time={event.time}
                 action={event.action || "REGISTER NOW"}
@@ -75,7 +75,7 @@ export default function Events() {
                 title={event.title}
                 date={new Date(event.date).toLocaleDateString()}
                 text={event.description}
-                slug={`/events/${event._id}`}
+                slug={event._id}
                 venue={event.venue}
                 time={event.time}
                 action={event.action || "LEARN MORE"}

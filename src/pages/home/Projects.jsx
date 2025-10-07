@@ -42,7 +42,7 @@ export default function Projects() {
                 title={project.title}
                 date={project.date ? new Date(project.date).toDateString() : "No date"}
                 text={project.description}
-                slug={`/projects/${project._id}`}
+                slug={project._id}
                 donateLink={false}
               />
             ))
