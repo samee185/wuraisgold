@@ -1,5 +1,6 @@
 import { Btn } from "../../utils/Button";
 import useEvent from "../../contexts/EventContext";
+import Single from "../../components/Single";
 
 export default function Events() {
   const { events, loading, error } = useEvent();
@@ -40,14 +41,15 @@ export default function Events() {
             upcomingEvents.map(event => (
               <Single
                 key={event._id}
+                id={event._id}
                 img={event.images && event.images[0] ? event.images[0] : ""}
                 title={event.title}
                 date={new Date(event.date).toLocaleDateString()}
-                slug={event._id}
-                action={event.action || "REGISTER NOW"}
+                text={event.description}
+                slug={`/events/${event._id}`}
                 venue={event.venue}
                 time={event.time}
-                description={event.description}
+                action={event.action || "REGISTER NOW"}
               />
             ))
           )}
@@ -68,14 +70,15 @@ export default function Events() {
             pastEvents.map(event => (
               <Single
                 key={event._id}
+                id={event._id}
                 img={event.images && event.images[0] ? event.images[0] : ""}
                 title={event.title}
                 date={new Date(event.date).toLocaleDateString()}
-                slug={event._id}
-                action={event.action || "LEARN MORE"}
+                text={event.description}
+                slug={`/events/${event._id}`}
                 venue={event.venue}
                 time={event.time}
-                description={event.description}
+                action={event.action || "LEARN MORE"}
               />
             ))
           )}
@@ -85,33 +88,4 @@ export default function Events() {
   );
 }
 
-function Single({ img, title, date, slug, action, venue, time, description }) {
-  return (
-    <div className="w-full flex flex-col bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group">
-      <div className="relative h-48 w-full overflow-hidden">
-        <img
-          src={img}
-          alt={title}
-          className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-500"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-        <div className="absolute bottom-0 left-0 right-0 px-4 py-2 text-white">
-          <h3 className="text-lg font-bold drop-shadow-lg">{title}</h3>
-          <p className="text-sm text-primary drop-shadow">{date}</p>
-        </div>
-      </div>
-      <div className="flex flex-col gap-2 p-5">
-        {venue && <p className="text-gray-700 font-medium"><span className="font-semibold text-primary">Venue:</span> {venue}</p>}
-        {time && <p className="text-gray-700 font-medium"><span className="font-semibold text-primary">Time:</span> {time}</p>}
-        {description && <p className="text-gray-500 text-sm leading-relaxed line-clamp-3">{description}</p>}
-      </div>
-      <div className="w-full px-5 pb-5">
-        <Btn
-          name={action}
-          id={`/events/${slug}`}
-          className="block w-full bg-primary text-white text-center py-2 rounded-full font-semibold shadow hover:bg-primary/90 transition-all"
-        />
-      </div>
-    </div>
-  );
-}
+// ...existing code...
