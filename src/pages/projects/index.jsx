@@ -3,8 +3,8 @@ import Header from "../../layout/Header";
 import Footer from "../../layout/Footer";
 import Hero from "../../utils/Hero";
 import { Btn } from "../../utils/Button";
-import { Link } from "react-router-dom";
 import { useProject } from "../../contexts/ProjectContext";
+import Single from "../../components/Single";
 
 export default function Index() {
   const { projects, loading } = useProject(); 
@@ -24,9 +24,9 @@ export default function Index() {
           <div className="w-full flex flex-col md:grid grid-cols-3 gap-10">
             {projects.map((project, i) => (
               <Single
-                key={i}
-                _id={project?._id}
-                img={project?.images[0]}
+                key={project?._id || i}
+                id={project?._id}
+                img={project?.images?.[0]}
                 title={project?.title}
                 date={new Date(project?.date).toLocaleDateString("en-US", {
                   year: "numeric",
@@ -34,6 +34,8 @@ export default function Index() {
                   day: "numeric",
                 })}
                 text={project?.text}
+                slug={`/projects/${project?._id}`}
+                donateLink={true}
               />
             ))}
           </div>
@@ -45,32 +47,4 @@ export default function Index() {
   );
 }
 
-function Single({ ...info }) {
-  return (
-    <div className="w-full flex flex-col gap-5 bg-white p-5 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300">
-      <img
-        src={info?.img}
-        alt={info?.title}
-        className="w-full object-cover rounded-md h-48"
-      />
-      <div className="flex flex-col gap-2">
-        <b className="text-xl text-black">{info?.title}</b>
-        <p className="text-primary">{info?.date}</p>
-        <p className="text-gray-700">{info?.text}</p>
-      </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-        <Btn
-          name="VIEW PROJECT"
-          id={`/projects/${info?._id}`}
-          style="w-full"
-        />
-        <Link
-          to={`/donate-now`}
-          className={`min-w-fit w-full bg-inherit h-10 md:h-12 uppercase font-[500] md:font-[600] flex items-center justify-center px-5 `}
-        >
-          DONATE NOW
-        </Link>
-      </div>
-    </div>
-  );
-}
+// ...existing code...
