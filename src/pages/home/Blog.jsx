@@ -6,6 +6,7 @@ import dp3 from "../../assets/dp3.png";
 import dp4 from "../../assets/dp4.png";
 import dp5 from "../../assets/dp5.png";
 import { useBlog } from "../../contexts/BlogContext";
+import Single from "../../components/Single";
 
 export default function Blog() {
   const { blogs, loading } = useBlog();
@@ -28,11 +29,12 @@ export default function Blog() {
           blogs.slice(0, 3).map((blog) => (
             <Single
               key={blog._id}
-              img={blog?.image} // assuming `images` is an array
+              id={blog._id}
+              img={blog?.image}
               title={blog?.title}
               date={new Date(blog?.createdAt).toDateString()}
               slug={blog?.slug}
-              text={blog?.excerpt || blog?.content?.slice(0, 120) + "..."}
+              text={blog?.excerpt || (blog?.content ? blog?.content.slice(0, 120) + "..." : "")}
             />
           ))
         ) : (
@@ -104,19 +106,7 @@ export default function Blog() {
   );
 }
 
-function Single({ img, title, date, text, slug }) {
-  return (
-    <div className="w-full flex flex-col gap-5 bg-white p-5 rounded-xl">
-      <img src={img} alt={title} className="w-full object-cover" />
-      <div className="flex flex-col gap-2">
-        <b className="text-xl text-black">{title}</b>
-        <p className="text-primary">{date}</p>
-      </div>
-      <p className="mb-auto">{text}</p>
-      <Btn name="Read More" slug={`/blogs/${slug}`} />
-    </div>
-  );
-}
+// ...existing code...
 
 const TestSingle = ({ icon, title, text, name }) => (
   <nav className="min-w-[90%] w-[90%] md:min-w-[30%] md:w-[30%] bg-white border md:flex flex-col gap-5 px-5 py-5 md:py-10 shad rounded-lg justify-evenly">
