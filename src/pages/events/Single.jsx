@@ -41,7 +41,7 @@ export default function Single() {
       <ScrollToTop />
       <Header />
       <section className="px-5 py-10 min-h-[50vh] w-full text-center flex flex-col gap-5 justify-center items-center text-white bg-primary">
-        <h2 className="text-3xl md:text-[64px] font-[500]">{event?.title}</h2>
+        <h2 className="text-3xl md:text-5xl">{event?.title}</h2>
         <p>{event?.description}</p>
         <nav className="flex flex-col gap-5 md:flex-row">
           <p>
