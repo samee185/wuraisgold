@@ -59,10 +59,12 @@ export default function Single() {
         {event.images && event.images[0] && (
           <img src={event.images[0]} alt={event.title} className="rounded-xl w-full max-h-96 object-cover" />
         )}
-        {event.about && (
+        {((event.aboutEvent && event.aboutEvent.length) || (event.about && event.about.length) || (event.description && event.description.length)) && (
           <>
             <h4 className="text-3xl md:text-[40px] font-[600] text-black">About Event</h4>
-            <p className="text-lg">{event.aboutEvent}</p>
+            <p className="text-lg">
+              {event.aboutEvent ?? event.about ?? event.description}
+            </p>
           </>
         )}
         {event.webinar && (
