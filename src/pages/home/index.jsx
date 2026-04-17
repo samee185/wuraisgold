@@ -10,6 +10,7 @@ import Events from "./Events";
 // import Volunteer from "./Volunteer";
 import Blog from "./Blog";
 import Program from "./Program";
+import Partners from "./Partners";
 import Donate from "./Donate";
 import Subscribe from "../../layout/Subscribe";
 
@@ -32,6 +33,7 @@ export default function index() {
       <About />
       <Program />
       <Projects />
+      <Partners />
       <Donate />
       {/* <Events /> */}
       {/* <Volunteer /> */}

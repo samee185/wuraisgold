@@ -22,7 +22,7 @@ export default function index() {
           </div>
           <img src={donate} alt="" className="w-full object-contain" />
           <a
-            href="mailto:"
+            href="mailto:partnership@wuraisgold.org"
             className={`min-w-fit w-fit h-10 md:h-12 uppercase font-[500] md:font-[600] bg-primary text-white flex items-center justify-center px-5`}
           >
             SEND EMAIL
